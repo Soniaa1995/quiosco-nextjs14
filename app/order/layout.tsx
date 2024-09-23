@@ -4,6 +4,7 @@
 
 import OrderSideBar from "@/components/order/OrderSideBar";
 import OrderSummary from "@/components/order/OrderSummary";
+import ToastNotification from "@/components/ui/ToastNotification";
 
 //indica cada uno de los segmentos hijos que se va a inyectar a traves de children
 export default function RootLayout({children, }: Readonly<{children: React.ReactNode}>) {
@@ -18,6 +19,8 @@ export default function RootLayout({children, }: Readonly<{children: React.React
 
                 <OrderSummary />
             </div>
+
+            <ToastNotification />
         </>
     )
 }
