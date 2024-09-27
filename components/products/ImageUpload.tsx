@@ -1,10 +1,11 @@
 "use client"
+import { getImagePath } from "@/src/utils"
 import { CldUploadWidget } from "next-cloudinary"
 import Image from "next/image"
 import { useState } from "react"
 import {TbPhotoPlus} from 'react-icons/tb'
 
-export default function ImageUpload() {
+export default function ImageUpload({image}: {image: string | undefined}) {
 
     const [imageUrl, setImageUrl ] = useState('')
 
@@ -34,7 +35,7 @@ export default function ImageUpload() {
                         />
                         <p className="text-lg font-semibold">Agregar Imagen</p>
 
-                        {imageUrl && (
+                        {imageUrl && !imageUrl && (
                             <div className="absolute inset-0 w-full h-full">
                                 <Image 
                                     fill
@@ -46,10 +47,24 @@ export default function ImageUpload() {
                         )}
                     </div>
                 </div>
+                {image && (
+                    <div className="space-y-2">
+                        <label>Imagen actual:</label>
+                        <div className="relative w-64 h-64">
+                            <Image 
+                                fill
+                                src={getImagePath(image)}
+                                alt="Imagen producto"
+                                style={{objectFit: 'contain'}}
+                            />
+                        </div>
+                    </div>
+                )}
+
                 <input 
                     type="hidden"
                     name="image"
-                    value={imageUrl} 
+                    defaultValue={imageUrl ? imageUrl : image} 
                 />
             </>
         )}
