@@ -5,7 +5,7 @@ import Heading from "@/components/ui/Heading";
 import { OrderWithProducts } from "@/src/types";
 import useSWR from "swr";
 
-export default function ORdersPage() {
+export default function OrdersPage() {
 
     const url = '/admin/orders/api'
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
